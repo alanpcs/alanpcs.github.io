@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+    <defs>
+        <linearGradient id="triangle" x1="200%" y1="0%" x2="50%" y2="100%">
+            <animate attributeName="x1" values="-100%;200%" dur="5s" restart="mouseover" fill=" remove" />
+            <stop offset="0%" style="stop-color:rgba(0,128,128,0.5)" stop-opacity="0">
+                <animate attributeName="stop-opacity" values="1;0" restart="mouseover" dur="5s" />
+            </stop>
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0)">
+            </stop>
+        </linearGradient>
+        <radialGradient id="logo" r="0%" cx="50%" cy="25%" fx="50%" fy="25%">
+            <animate attributeName="r" values="0%;200%" dur="5s" restart="never" fill="freeze" />
+            <stop offset="0%" style="stop-color:rgb(0,128,128,1)" />
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0)" />
+        </radialGradient>
+    </defs>
+    <path d="M 0 200 L 140 0 L 280 200" fill="url(#triangle)">
+    </path>
+    <path d="M 210 300 L 70 100 M 70 100 L 210 100 M 210 100 L 140 200 M 0 200 L 140 0 M 140 0 L 280 200"
+        style="stroke:url(#logo);stroke-width:2;" stroke-linecap="round" />
+</svg>
