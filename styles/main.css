@@ -1,15 +1,19 @@
-body {
-  height: 100vh;
+html {
+  height: 100%;
   font-size: 16px;
+}
+
+body {
+  height: 100%;
   line-height: 1.25rem;
   font-family: "Crimson Text", serif;
 
   background: url("/img/background.png") no-repeat;
   background-size: cover;
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 640px) 1fr;
+  grid-template-columns: 1fr minmax(320px, 2fr) 1fr;
   grid-template-rows: 0.4fr 2.2fr 0.4fr;
-  gap: 1rem 1rem;
+  gap: 1rem;
 }
 
 section {
@@ -39,15 +43,16 @@ h3 {
 
 .grid {
   grid-area: 2 / 2 / 3 / 3;
+  min-width: 20rem;
+  padding: 1em;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
-  overflow: hidden;
+  overflow: auto;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0.25rem 0.25rem;
+  grid-template-rows: minmax(150px, 1fr) 2fr 150px;
   grid-template-areas:
     " . logo logo . "
     " photo photo info info "
@@ -56,6 +61,27 @@ h3 {
 
 .logo {
   grid-area: logo;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.photo {
+  grid-area: photo;
+}
+
+.photo img {
+  max-width: 15rem;
+  border-radius: 50%;
+}
+
+.info {
+  grid-area: info;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .links {
@@ -87,31 +113,14 @@ h3 {
 
 .qr-code img {
   width: 100%;
+  max-height: 100%;
   max-width: 150px;
-  margin: 1rem;
 }
 
-.photo {
-  grid-area: photo;
-}
-
-.photo img {
-  width: 10rem;
-  border-radius: 50%;
-}
-
-.info {
-  grid-area: info;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .grid {
-    padding: 1rem;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0.25rem 0.25rem;
+    gap: 0.5rem;
     grid-template-areas:
       " logo logo "
       " photo info "
@@ -119,8 +128,37 @@ h3 {
       " links links ";
   }
 
+  .photo img {
+    width: 10rem;
+  }
+
   .qr-code {
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      " logo "
+      " photo "
+      " info "
+      " qr-code "
+      " links ";
+  }
+
+  .info {
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  html {
+    font-size: 32px;
+  }
+  .photo img {
+    width: 40rem;
   }
 }
